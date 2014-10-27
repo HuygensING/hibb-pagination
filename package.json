@@ -20,6 +20,7 @@
     "gulp-util": "^3.0.1",
     "jade": "^1.7.0",
     "jadeify": "^2.7.0",
+    "nib": "^1.0.4",
     "streamify": "^0.2.4",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^0.10.1"

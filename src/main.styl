@@ -1,3 +1,5 @@
+@import 'nib'
+
 select_none()
 	-webkit-touch-callout none
 	-webkit-user-select none
@@ -9,6 +11,8 @@ select_none()
 ul.pagination
 	select_none()
 	list-style none
+	padding 0
+	margin 0
 
 	li
 		display inline-block
@@ -21,6 +25,26 @@ ul.pagination
 			&.active
 				color black
 				cursor pointer
+
+		&.current
+			&.active
+				span
+					display none
+
+				input
+					border 1px solid #DDD
+					border-radius 3px
+
+			span
+				cursor pointer
+
+			input
+				font-family inherit
+				font-size inherit
+				width 0
+				border none
+				background #EEE
+				text-align center
 
 		&.text
 			color gray

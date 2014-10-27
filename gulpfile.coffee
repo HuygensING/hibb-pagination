@@ -8,12 +8,17 @@ source = require 'vinyl-source-stream'
 uglify = require 'gulp-uglify'
 stylus = require 'gulp-stylus'
 extend = require 'extend'
+nib = require 'nib'
 
 productionDir = './dist'
 
 createCSS = ->
+	gutil.log('Creating CSS')
 	gulp.src('./src/main.styl')
-		.pipe(stylus())
+		.pipe(stylus(
+			use: [nib()]
+			errors: true
+		))
 		.pipe(gulp.dest(productionDir))
 
 minify = ->
