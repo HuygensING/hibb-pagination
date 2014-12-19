@@ -1,0 +1,54 @@
+ul.hibb-pagination {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.hibb-pagination li {
+  display: inline-block;
+  padding: 0 4px;
+}
+ul.hibb-pagination li.prev10,
+ul.hibb-pagination li.prev,
+ul.hibb-pagination li.next,
+ul.hibb-pagination li.next10 {
+  color: #ccc;
+  pointer: default;
+}
+ul.hibb-pagination li.prev10.active,
+ul.hibb-pagination li.prev.active,
+ul.hibb-pagination li.next.active,
+ul.hibb-pagination li.next10.active {
+  color: #000;
+  cursor: pointer;
+}
+ul.hibb-pagination li.current.active span {
+  display: none;
+}
+ul.hibb-pagination li.current.active input {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+ul.hibb-pagination li.current span {
+  cursor: pointer;
+}
+ul.hibb-pagination li.current input {
+  font-family: inherit;
+  font-size: inherit;
+  width: 0;
+  border: none;
+  background: #eee;
+  text-align: center;
+}
+ul.hibb-pagination li.text {
+  color: #808080;
+}
