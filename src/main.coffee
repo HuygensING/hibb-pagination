@@ -14,7 +14,7 @@ class Pagination extends Backbone.View
 
 	tagName: 'ul'
 
-	className: 'pagination'
+	className: 'hibb-pagination'
 	###
 	@constructs
 	@param {object} this.options

@@ -1,6 +1,6 @@
 {
-  "name": "huygens-backbone-pagination",
-  "version": "1.0.0",
+  "name": "hibb-pagination",
+  "version": "1.1.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
