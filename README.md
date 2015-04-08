@@ -5,9 +5,9 @@ Pagination view.
 ## Initialize
 ```
 pagination = new HibbPagination
-	resultsStart: responseModel.get('start')
-	resultsPerPage: @options.config.get 'resultRows'
-	resultsTotal: responseModel.get('numFound')
+	resultsStart: 0
+	resultsPerPage:  10
+	resultsTotal: 588
 
 pagination.on 'change:pagenumber', changePageFunc
 
