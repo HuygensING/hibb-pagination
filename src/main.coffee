@@ -1,5 +1,6 @@
 Backbone = require 'backbone'
 $ = require 'jquery'
+Backbone.$ = $
 
 util = require 'funcky.util'
 

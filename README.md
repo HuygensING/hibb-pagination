@@ -2,6 +2,18 @@
 
 Pagination view.
 
+## Initialize
+```
+pagination = new HibbPagination
+	resultsStart: responseModel.get('start')
+	resultsPerPage: @options.config.get 'resultRows'
+	resultsTotal: responseModel.get('numFound')
+
+pagination.on 'change:pagenumber', changePageFunc
+
+@$('.container').html pagination.el
+```
+
 ## Changelog
 
 ### v1.2.0

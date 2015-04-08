@@ -1,7 +1,7 @@
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 rename = require 'gulp-rename'
-streamify = require 'streamify'
+derequire = require 'gulp-derequire'
 browserify = require 'browserify'
 watchify = require 'watchify'
 source = require 'vinyl-source-stream'
@@ -31,15 +31,17 @@ createBundle = (watch=false) ->
 	args =
 		entries: './src/main.coffee'
 		extensions: ['.coffee', '.jade']
+		standalone: 'Pagination'
 
 	args = extend args, watchify.args if watch
 
 	bundle = ->
 		# Create bundle
 		gutil.log('Browserify: bundling')
-		bundler.bundle(standalone: 'Pagination')
+		bundler.bundle()
 			.on('error', ((err) -> gutil.log("Bundling error ::: "+err)))
 			.pipe(source("index.js"))
+			.pipe(derequire())
 			.pipe(gulp.dest(productionDir))
 
 		minify()
@@ -61,25 +63,6 @@ createBundle = (watch=false) ->
 
 gulp.task 'browserify', -> createBundle false
 gulp.task 'watchify', -> createBundle true
-
-gulp.task 'browserify-libs', ->
-	libs =
-		jquery: './node_modules/jquery/dist/jquery'
-		backbone: './node_modules/backbone/backbone'
-		underscore: './node_modules/underscore/underscore'
-
-	paths = Object.keys(libs).map (key) -> libs[key]
-
-	bundler = browserify paths
-
-	for own id, path of libs
-		console.log id
-		bundler.require path, expose: id
-
-	gutil.log('Browserify: bundling libs')
-	bundler.bundle()
-		.pipe(source("libs.js"))
-		.pipe(gulp.dest(productionDir))
 
 gulp.task 'watch', ['watchify'], ->
 	gulp.watch ['./src/main.styl'], -> createCSS()
