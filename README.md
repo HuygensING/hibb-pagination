@@ -16,6 +16,10 @@ pagination.on 'change:pagenumber', changePageFunc
 
 ## Changelog
 
+### v1.2.1
+
+* Set default options to an empty object
+
 ### v1.2.0
 
 * Add title attribute to prev10, prev, current, next, next10 listitems.

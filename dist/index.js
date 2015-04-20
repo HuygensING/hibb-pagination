@@ -1,7 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Pagination = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 var $, Backbone, Pagination, tpl, util,
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 Backbone = _dereq_('backbone');
 
@@ -20,8 +20,8 @@ Create a pagination view.
 @extends Backbone.View
  */
 
-Pagination = (function(_super) {
-  __extends(Pagination, _super);
+Pagination = (function(superClass) {
+  extend(Pagination, superClass);
 
   function Pagination() {
     return Pagination.__super__.constructor.apply(this, arguments);
@@ -40,16 +40,17 @@ Pagination = (function(_super) {
   	@prop {number} [options.resultsStart=0] - The result item to start at. Not the start page!
   	@prop {boolean} [options.step10=true] - Render (<< and >>) for steps of 10.
   	@prop {boolean} [options.triggerPageNumber=true] - Trigger the new pageNumber (true) or prev/next (false).
+  	@prop {array<String>} [options.showPageNames] - Show `1 page of 23 pages` instead of `1 of 23`. Array contains the singular and plural version, ie: ["page", "pages"]
    */
 
   Pagination.prototype.initialize = function(options) {
-    var _base, _base1;
-    this.options = options;
-    if ((_base = this.options).step10 == null) {
-      _base.step10 = true;
+    var base, base1;
+    this.options = options != null ? options : {};
+    if ((base = this.options).step10 == null) {
+      base.step10 = true;
     }
-    if ((_base1 = this.options).triggerPageNumber == null) {
-      _base1.triggerPageNumber = true;
+    if ((base1 = this.options).triggerPageNumber == null) {
+      base1.triggerPageNumber = true;
     }
     this._currentPageNumber = (this.options.resultsStart != null) && this.options.resultsStart > 0 ? (this.options.resultsStart / this.options.resultsPerPage) + 1 : 1;
     return this.setPageNumber(this._currentPageNumber, true);

@@ -24,8 +24,9 @@ class Pagination extends Backbone.View
 	@prop {number} [options.resultsStart=0] - The result item to start at. Not the start page!
 	@prop {boolean} [options.step10=true] - Render (<< and >>) for steps of 10.
 	@prop {boolean} [options.triggerPageNumber=true] - Trigger the new pageNumber (true) or prev/next (false).
+	@prop {array<String>} [options.showPageNames] - Show `1 page of 23 pages` instead of `1 of 23`. Array contains the singular and plural version, ie: ["page", "pages"]
 	###
-	initialize: (@options) ->
+	initialize: (@options={}) ->
 		@options.step10 ?= true
 		@options.triggerPageNumber ?= true
 
@@ -124,6 +125,7 @@ class Pagination extends Backbone.View
 			@trigger direction
 
 		@_currentPageNumber = pageNumber
+
 		@render()
 
 		unless silent
