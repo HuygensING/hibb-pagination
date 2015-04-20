@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bump:patch": "npm version patch && git push && git push --tags",
+    "bump:minor": "npm version minor && git push && git push --tags",
+    "bump:major": "npm version major && git push && git push --tags"
   },
   "author": "gijsjan.brouwer@huygens.knaw.nl (https://github.com/Gijsjan)",
   "license": "ISC",
